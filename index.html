@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -114,7 +113,7 @@
       max-width: 90%;
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
     }
-    #balance {
+    #balance, #ad-count {
       font-size: 28px;
       color: #ffd700;
       font-weight: 700;
@@ -164,157 +163,127 @@
       margin: 5px 0;
       font-size: 16px;
     }
-    .top-banner {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 50px;
-      text-align: center;
-      z-index: 10;
-    }
-    .social-bar {
-      margin: 10px 0;
-      width: 100%;
-    }
-    .native-banner {
-      position: relative;
-      margin-top: 20px;
-      width: 100%;
-    }
   </style>
 </head>
 <body>
-
-  <!-- Logo in top-left corner -->
   <div class="logo">
-    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh1iBqomti0MXK1AC_Xzc_H33f3jiCjuQJrFwgi3kqcbxsRbVmAaMSAbLPBBaqSeRcvVri3QtssJJC4wwXzxV6VwFnjPXK9_rlBr2AJUdJyQyJ3CYCaP6Z4Me4pufVBnOEtFH87nNbj77Yv5Jz4oM6lVFjIb64p0kAc7NHIhU5MgCuoT5p41v5kJsO-SS80/s320/IMG_20250721_171515.jpg" alt="Logo">
+    <img src="https://blogger.googleusercontent.com/img/b/..." alt="Logo">
   </div>
-
   <div class="container">
-
-    <!-- Home Screen -->
     <div id="home-screen" class="screen active">
-      <h1></h1>
+      <h1>BDH SAKIB GIFT</h1>
       <div class="five-star"></div>
-      <div class="social-bar">
-        <script type='text/javascript' src='//pl27196691.profitableratecpm.com/ae/87/09/ae8709e9e2e911445654f12cc184bb6c.js'></script>
+      <div class="balance-container">
+        <div id="ad-count">Ads Viewed: 0</div>
       </div>
       <button class="button" onclick="showScreen('work-screen')">Start</button>
-      <div class="native-banner">
-        <script async src="//pl27197543.profitableratecpm.com/8fc56add6ad3bc80282284815db58fbf/invoke.js"></script>
-        <div id="container-8fc56add6ad3bc80282284815db58fbf"></div>
-      </div>
-    </div>
-
-    <!-- Work Screen -->
-    <div id="work-screen" class="screen">
-      <h2>Work Screen</h2>
-      <div class="balance-container">
-        <div id="balance">Balance: 0.00 Coins</div>
-      </div>
-      <div class="social-bar">
-        <script type='text/javascript' src='//pl27226242.profitableratecpm.com/90/fc/b0/90fcb073d23df069af3af652129b1161.js'></script>
-      </div>
-      <button class="button" onclick="watchAd()">Watch Ad</button>
-      <button class="button" onclick="showScreen('withdrawal-screen')">Withdraw Request</button>
-      <div class="native-banner">
-        <script async="async" data-cfasync="false" src="//pl27226263.profitableratecpm.com/75fe6463039a3b742bce50f7f5cfcf83/invoke.js"></script>
-<div id="container-75fe6463039a3b742bce50f7f5cfcf83"></div>
-      </div>
-    </div>
-
-    <!-- Withdrawal Screen -->
-    <div id="withdrawal-screen" class="screen">
-      <h2>Withdrawal Request</h2>
-      <select id="diamond-amount" class="input-field">
-        <option value="25">25 Diamonds (100 Coins)</option>
-        <option value="50">50 Diamonds (190 Coins)</option>
-        <option value="115">115 Diamonds (300 Coins)</option>
-      </select>
-      <input type="text" id="user-name" class="input-field" placeholder="Enter Your Name" />
-      <input type="text" id="user-uid" class="input-field" placeholder="Enter 8-10 Digit Free Fire UID" />
-      <button class="button" onclick="submitWithdrawal()">Submit Withdrawal</button>
-      <div id="withdrawal-history"></div>
-    </div>
-
-    <!-- Ad Display -->
-    <div id="ad-container">
-      <div id="ad-timer">20</div>
-      <iframe id="ad-frame" src=""></iframe>
-    </div>
+    </div><div id="work-screen" class="screen">
+  <h2>Work Screen</h2>
+  <div class="balance-container">
+    <div id="balance">Balance: 0.00 Coins</div>
   </div>
+  <button class="button" onclick="watchAd()">Watch Ad</button>
+  <button class="button" onclick="showScreen('withdrawal-screen')">Withdraw Request</button>
+  <button class="button" onclick="showScreen('home-screen')">Back</button>
+</div>
 
+<div id="withdrawal-screen" class="screen">
+  <h2>Withdrawal Request</h2>
+  <select id="diamond-amount" class="input-field">
+    <option value="25">25 Diamonds (100 Coins)</option>
+    <option value="50">50 Diamonds (190 Coins)</option>
+    <option value="115">115 Diamonds (300 Coins)</option>
+  </select>
+  <input type="text" id="user-name" class="input-field" placeholder="Enter Your Name" />
+  <input type="text" id="user-uid" class="input-field" placeholder="Enter 8-10 Digit Free Fire UID" />
+  <button class="button" onclick="submitWithdrawal()">Submit Withdrawal</button>
+  <div id="withdrawal-history"></div>
+</div>
+
+<div id="ad-container">
+  <div id="ad-timer">20</div>
+  <iframe id="ad-frame" src=""></iframe>
+</div>
+
+  </div>
   <script>
     let balance = parseFloat(localStorage.getItem('balance')) || 0;
-    let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];
+    let adCount = parseInt(localStorage.getItem('adCount')) || 0;
+    let withdrawals = JSON.parse(localStorage.getItem('withdrawals')) || [];function updateBalance() {
+  document.getElementById('balance').textContent = `Balance: ${balance.toFixed(2)} Coins`;
+  localStorage.setItem('balance', balance);
+}
 
-    function updateBalance() {
-      document.getElementById('balance').textContent = `Balance: ${balance.toFixed(2)} Coins`;
-      localStorage.setItem('balance', balance);
-    }
+function updateAdCount() {
+  document.getElementById('ad-count').textContent = `Ads Viewed: ${adCount}`;
+  localStorage.setItem('adCount', adCount);
+}
 
-    function showScreen(id) {
-      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
+function updateHistory() {
+  const historyDiv = document.getElementById('withdrawal-history');
+  historyDiv.innerHTML = '<h3>Withdrawal History</h3>';
+  withdrawals.forEach((w, i) => {
+    historyDiv.innerHTML += `<p>${i + 1}. ${w.diamonds} Diamonds by ${w.name} (UID: ${w.uid}) on ${w.date}</p>`;
+  });
+  historyDiv.innerHTML += `<p>Total Withdrawals: ${withdrawals.length}</p>`;
+}
 
-    function watchAd() {
-      const adContainer = document.getElementById('ad-container');
-      const adFrame = document.getElementById('ad-frame');
-      const adTimer = document.getElementById('ad-timer');
-      let adSeconds = 20;
-      adFrame.src = 'https://www.profitableratecpm.com/bw79z23ej?key=6006ebdd55ceb33af0ea793ba873b02b';
-      adContainer.style.display = 'flex';
-      adTimer.textContent = adSeconds;
-      const adInterval = setInterval(() => {
-        adSeconds--;
-        adTimer.textContent = adSeconds;
-        if (adSeconds <= 0) {
-          clearInterval(adInterval);
-          adContainer.style.display = 'none';
-          balance += 0.20;
-          updateBalance();
-          adFrame.src = '';
-        }
-      }, 1000);
-    }
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
 
-    function submitWithdrawal() {
-      const diamond = parseInt(document.getElementById('diamond-amount').value);
-      const name = document.getElementById('user-name').value.trim();
-      const uid = document.getElementById('user-uid').value.trim();
-      const cost = { 25: 100, 50: 190, 115: 300 };
-
-      if (!name || !/^\d{8,10}$/.test(uid)) {
-        alert('Enter valid name and 8-10 digit UID.');
-        return;
-      }
-      if (balance < cost[diamond]) {
-        alert('Insufficient balance.');
-        return;
-      }
-
-      balance -= cost[diamond];
+function watchAd() {
+  const adContainer = document.getElementById('ad-container');
+  const adFrame = document.getElementById('ad-frame');
+  const adTimer = document.getElementById('ad-timer');
+  let adSeconds = 20;
+  adFrame.src = 'https://www.profitableratecpm.com/bw79z23ej?key=6006ebdd55ceb33af0ea793ba873b02b';
+  adContainer.style.display = 'flex';
+  adTimer.textContent = adSeconds;
+  const interval = setInterval(() => {
+    adSeconds--;
+    adTimer.textContent = adSeconds;
+    if (adSeconds <= 0) {
+      clearInterval(interval);
+      adContainer.style.display = 'none';
+      adFrame.src = '';
+      balance += 0.20;
+      adCount++;
       updateBalance();
-      const withdrawal = { diamonds: diamond, name, uid, date: new Date().toLocaleString() };
-      withdrawals.push(withdrawal);
-      localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
-      updateHistory();
-      alert('Withdrawal request submitted!');
+      updateAdCount();
     }
+  }, 1000);
+}
 
-    function updateHistory() {
-      const historyDiv = document.getElementById('withdrawal-history');
-      historyDiv.innerHTML = '<h3>Withdrawal History</h3>';
-      withdrawals.forEach((w, i) => {
-        historyDiv.innerHTML += `<p>${i + 1}. ${w.diamonds} Diamonds by ${w.name} (UID: ${w.uid}) on ${w.date}</p>`;
-      });
-      historyDiv.innerHTML += `<p>Total Withdrawals: ${withdrawals.length}</p>`;
-    }
+function submitWithdrawal() {
+  const diamond = parseInt(document.getElementById('diamond-amount').value);
+  const name = document.getElementById('user-name').value.trim();
+  const uid = document.getElementById('user-uid').value.trim();
+  const cost = { 25: 100, 50: 190, 115: 300 };
 
-    updateBalance();
-    updateHistory();
+  if (!name || !/^\d{8,10}$/.test(uid)) {
+    alert('Enter valid name and 8-10 digit UID.');
+    return;
+  }
+  if (balance < cost[diamond]) {
+    alert('Insufficient balance.');
+    return;
+  }
+
+  balance -= cost[diamond];
+  updateBalance();
+  const withdrawal = { diamonds: diamond, name, uid, date: new Date().toLocaleString() };
+  withdrawals.push(withdrawal);
+  localStorage.setItem('withdrawals', JSON.stringify(withdrawals));
+  updateHistory();
+  alert('Withdrawal request submitted!');
+}
+
+updateBalance();
+updateAdCount();
+updateHistory();
+
   </script>
 </body>
-</html>
+  </html>
